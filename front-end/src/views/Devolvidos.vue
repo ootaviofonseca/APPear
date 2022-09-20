@@ -108,6 +108,7 @@
       deleteDevolucao(this.dados.itemid)
       .then(()=>{
         this.$bvModal.hide("modalDeletar");
+        location.reload();
       }).catch((err)=>{
         console.error(err)
       });
@@ -121,12 +122,12 @@
     createCase(){
       postCase(this.dados)
       .then(()=>{
-          alert('ENVIADO PARA devolucao')
+          alert('DEVOLUCAO REGISTRADO')
         }).catch((err)=>{
           console.error(err)
         });
       this.$bvModal.hide("modal-editar");
-      this.$forceUpdate();
+      location.reload();
     },
 
     editar(item){

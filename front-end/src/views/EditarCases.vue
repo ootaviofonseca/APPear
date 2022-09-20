@@ -92,6 +92,7 @@
       deleteCase(this.dados.itemid)
       .then(()=>{
         this.$bvModal.hide("modalDeletar");
+        location.reload();
       }).catch((err)=>{
         console.error(err)
       });
