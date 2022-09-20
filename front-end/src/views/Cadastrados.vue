@@ -32,21 +32,21 @@
           <template #modal-title>
             Item cadastrado
           </template>
-          <b-form-input v-model = "dados.status"></b-form-input>
+          <b-form-input v-model = "dados.status" :disabled="validated ? disabled : ''"></b-form-input>
           <b-form-select
           :options="[{ text: 'Selecione a categoria do item', value:null}, 'Vestuário', 'Eletrônico', 'Acessório', 'Documento', 'Outros']"
           :value="null"
           type="text"
           v-model = "dados.categoria"
           class="mt-2"
+          id="categoria"
           ></b-form-select>
-          <b-form-input v-model = "dados.descricao" class="mt-2"></b-form-input>
+          <b-form-input v-model = "dados.descricao" class="mt-2" id="descricao"></b-form-input>
 
           <b-button @click="deletar" class="mt-3 botaoModal" block>Excluir</b-button>
-          <b-button @click="editarItem" class="mt-3 botaoModal" block>Editar </b-button>
+          <b-button @click="editarItem" class="mt-3 botaoModal" id = "editar" block>Editar </b-button>
           <b-button @click="devolve" class="mt-3 botaoModal" block>Finalizar</b-button>
           
-
         </b-modal>
       </b-row>
       <b-row class="justify-content-end">
@@ -65,41 +65,41 @@
 </template>
 
 <script>
-  import {getItens, deleteItem, putItem} from "@/services/api/item.js"
-  import {postDevolucao} from "@/services/api/devolucao.js"
-  
-  export default {
-    data() {
-      return {
-      perPage: 6,
-      currentPage: 1,
-      selected: [],
-      fields: [
-        {
-          key: 'status',
-          label: 'Situação',
-          tdClass: 'status',
-          thClass: 'th-situacao',
-        },
-        {
-          key: 'categoria',
-          label: 'Categoria',
-          tdClass: 'categoria',
-          thClass: 'th-categoria',
-        },
-        {
-          key: 'descricao',
-          label: 'Descrição',
-          tdClass: 'descricao',
-          thClass: 'th-descricao',
-        },
-        {
-          key: 'buttons',
-          label: 'Botões',
-          tdClass: 'buttons',
-          thClass: 'th-buttons',
-        },
-      ],
+import {getItens, deleteItem, putItem} from "@/services/api/item.js"
+import {postDevolucao} from "@/services/api/devolucao.js"
+
+export default {
+  data() {
+    return {
+    perPage: 6,
+    currentPage: 1,
+    selected: [],
+    fields: [
+      {
+        key: 'status',
+        label: 'Situação',
+        tdClass: 'status',
+        thClass: 'th-situacao',
+      },
+      {
+        key: 'categoria',
+        label: 'Categoria',
+        tdClass: 'categoria',
+        thClass: 'th-categoria',
+      },
+      {
+        key: 'descricao',
+        label: 'Descrição',
+        tdClass: 'descricao',
+        thClass: 'th-descricao',
+      },
+      {
+        key: 'buttons',
+        label: 'Botões',
+        tdClass: 'buttons',
+        thClass: 'th-buttons',
+      },
+    ],
       items: [],
       dados:{
         status: '',
@@ -107,7 +107,6 @@
         descricao:'',
       }
     }
-    
   },
   methods: {
     deletar(){
@@ -118,7 +117,7 @@
         console.error(err)
       });
       this.$bvModal.hide("modal-editar");
-      this.$forceUpdate();
+      location.reload();
     },
 
     editarItem(){
@@ -130,9 +129,7 @@
           console.error(err)
           this.$bvModal.hide("modal-editar");
         });
-      
-      this.$forceUpdate();
-
+      location.reload();
     },
 
     editar(item){
@@ -148,9 +145,8 @@
           console.error(err)
         });
       this.$bvModal.hide("modal-editar");
-      this.$forceUpdate();
+      location.reload();
     }
-
   },
  
   mounted(){

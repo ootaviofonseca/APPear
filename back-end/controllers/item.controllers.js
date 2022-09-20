@@ -15,7 +15,8 @@ async function getItem(req, res){
 }
 
 async function getItems(req, res){           
-    const retorno = await itemServices.getItems() 
+    const {categoria} = req.query;
+    const retorno = await itemServices.getItems(categoria) 
     console.log(retorno)
     res.send(retorno)
 }

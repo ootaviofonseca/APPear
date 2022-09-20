@@ -13,103 +13,86 @@
       <b-button size="mm" class="my-3 my-sm-0" type="submit">Buscar</b-button>
     </b-nav-form>
     <div style="margin-top: 30px">
-      <h1 id="categoria">Itens que foram encontrados recentemente:</h1>
-      <b-card-group deck>
-        <b-card
-        no-body
-        style="max-width: rem; margin-top: 30px;"
-        img-src="https://placekitten.com/380/200"
-        img-alt="Image"
-        img-top
-        ><template #header>
-          <h4 class="mb-0">Gatinho fofe</h4>
-        </template>
-        </b-card>
-
-        <b-card
-        no-body
-        style="max-width: rem; margin-top: 30px;"
-        img-src="https://placekitten.com/381/200"
-        img-alt="Image"
-        img-top
-        ><template #header>
-          <h4 class="mb-0">Gatinho fofe</h4>
-        </template>
-        </b-card>
-
-        <b-card
-        no-body
-        style="max-width: rem; margin-top: 30px;"
-        img-src="https://placekitten.com/378/200"
-        img-alt="Image"
-        img-top
-        ><template #header>
-          <h4 class="mb-0">Gatinho fofe</h4>
-        </template>
-        </b-card>
-
-        <b-card
-        no-body
-        style="max-width: rem; margin-top: 30px;"
-        img-src="https://placekitten.com/365/200"
-        img-alt="Image"
-        img-top
-        ><template #header>
-          <h4 class="mb-0">Gatinho fofe</h4>
-        </template>
-        </b-card>
-      </b-card-group>
-      <b-card-group deck>
-        <b-card
-        no-body
-        style="max-width: rem; margin-top: 30px;"
-        img-src="https://placekitten.com/380/200"
-        img-alt="Image"
-        img-top
-        ><template #header>
-          <h4 class="mb-0">Gatinho fofe</h4>
-        </template>
-        </b-card>
-
-        <b-card
-        no-body
-        style="max-width: rem; margin-top: 30px;"
-        img-src="https://placekitten.com/381/200"
-        img-alt="Image"
-        img-top
-        ><template #header>
-          <h4 class="mb-0">Gatinho fofe</h4>
-        </template>
-        </b-card>
-
-        <b-card
-        no-body
-        style="max-width: rem; margin-top: 30px;"
-        img-src="https://placekitten.com/378/200"
-        img-alt="Image"
-        img-top
-        ><template #header>
-          <h4 class="mb-0">Gatinho fofe</h4>
-        </template>
-        </b-card>
-
-        <b-card
-        no-body
-        style="max-width: rem; margin-top: 30px;"
-        img-src="https://placekitten.com/365/200"
-        img-alt="Image"
-        img-top
-        ><template #header>
-          <h4 class="mb-0">Gatinho fofe</h4>
-        </template>
-        </b-card>
-      </b-card-group>
+      <h1 id="categoria">Itens que foram cadastrados recentemente:</h1>
+      <b-container style="margin-top: 40px">
+        <b-row>
+          <b-table
+          striped
+          hover
+          :per-page="perPage"
+          :items="items"
+          :fields="fields"
+          :current-page="currentPage">
+          </b-table>
+        </b-row>
+        <b-row class="justify-content-end">
+          <b-pagination
+            v-model="currentPage"
+            :total-rows="rows"
+            :per-page="perPage"
+            first-number
+            last-number
+            class="pagination"
+            style="margin-right: 90px; margin-bottom: 22px; padding-right:15px;"
+          />
+        </b-row>
+      </b-container>
     </div>
   </body>
 </template>
 
 <script>
+ import {getItens} from "@/services/api/item.js"
 
+export default {
+   data() {
+      return {
+      perPage: 4,
+      currentPage: 1,
+      selected: [],
+      fields: [
+        {
+          key: 'status',
+          label: 'Situação',
+          tdClass: 'status',
+          thClass: 'th-situacao',
+        },
+        {
+          key: 'categoria',
+          label: 'Categoria',
+          tdClass: 'categoria',
+          thClass: 'th-categoria',
+        },
+        {
+          key: 'descricao',
+          label: 'Descrição',
+          tdClass: 'descricao',
+          thClass: 'th-descricao',
+        },
+      ],
+      items: [],
+      dados:{
+        status: '',
+        categoria:'',
+        descricao:'',
+      }
+    }
+  },
+  mounted(){
+    getItens(this.$route.query.categoria)
+    .then((res)=>{
+      this.items = res.data;
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
+  },
+  computed: {
+    rows() {
+      return this.items.length
+    }
+  },
+}
 
 </script>
 

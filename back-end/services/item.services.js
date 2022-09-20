@@ -8,8 +8,8 @@ async function getItem(itemid){
     return retorno
 } 
 
-async function getItems(){           
-    const retorno = await itemRepository.getItems();   
+async function getItems(categoria){           
+    const retorno = await itemRepository.getItems(categoria); 
     return retorno
 }
 
