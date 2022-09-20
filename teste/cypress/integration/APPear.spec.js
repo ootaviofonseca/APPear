@@ -16,7 +16,7 @@ describe('APPear', () => {
         cy.get('[type=submit]').click();
     });
 
-    it('Excluir um item', () => {
+    it('Editar um item', () => {
         cy.visit('http://localhost:8080/dash/cadastrados');
         cy.get('[aria-rowindex=1]').click();
         cy.get('[id=categoria]').select('Documento');
