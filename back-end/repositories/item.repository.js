@@ -34,6 +34,9 @@ async function getItems(categoria){
 async function updateItem(itemid, novo){
 
     const conn = await bd.conectar();
+    if(novo.aprovado == null){
+        novo.aprovado = "true";
+    }
     try{
         let valores = [novo.status, novo.categoria, novo.descricao,novo.aprovado, itemid]
         var query = await conn.query('UPDATE item SET status=$1, categoria=$2, descricao=$3, aprovado=$4 WHERE itemid=$5 RETURNING*', valores)//retorno do BD e guarda em uma variavel
