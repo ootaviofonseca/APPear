@@ -26,5 +26,13 @@ describe("Validação da descrição", () => {
 	});
 });
 
-describe("Validação da descrição", () => {
+describe("Validação da categoria", () => {
+	it("Mensagem de erro caso a categoria seja null", () => {
+	  const item3 = new APPear(null, 
+	  						   "Iphone 13 pro com capinha do Cruzeiro e tricado na tela", 
+							   "11/07/2022");
+	  item3.validadeCat();
+
+	  expect(item3.errors).toEqual(["Categoria vazia impossivel criar item"]);
+	});
 });

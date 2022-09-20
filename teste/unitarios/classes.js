@@ -14,5 +14,13 @@ export default class APPear{
 			this.errors.push("Item criado.");
 		}
 	}
+
+	validadeCat() {
+		if (this.categoria ==null) {
+			this.errors.push("Categoria vazia impossivel criar item");
+		} else {
+			this.errors.push("Item criado.");
+		}
+	}
 }
   
