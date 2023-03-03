@@ -110,9 +110,10 @@ export default {
   },
   methods: {
     deletar(){
+      alert('deseja deletar esse item?')
       deleteItem(this.dados.itemid)
       .then(()=>{
-        alert('deletado')
+        alert('deseja deletar esse item?')
       }).catch((err)=>{
         console.error(err)
       });
