@@ -16,7 +16,7 @@
             <div class="div-icones">
               <b class="margem-entre">
                 <b-icon-check class="icons" scale="2" />
-                <b class="finalizar">finalizar</b>
+                <b class="finalizar" >Devolvido</b>
               </b>
             </div>
             <div class="div-icones">
@@ -248,6 +248,7 @@ thead{
 
 .finalizar, .fotos, .excluir {
   margin-left: 5px;
+  font-weight: 1000000;
 }
 
 .botaoModal{
