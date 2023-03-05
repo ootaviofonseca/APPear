@@ -27,7 +27,7 @@
         <!-- Cadastrar item perdido -- Segunda aba-->
         <b-row class="align-items-center menu-box px-4 py-2">
           <b-col class="abas_text" md="4"
-            >Cadastrar item perdido</b-col
+            >Perdido</b-col
           >
         </b-row>
       </router-link>
@@ -41,7 +41,7 @@
         <!-- Cadastrar item encontrado -- Terceira aba-->
         <b-row class="align-items-center menu-box px-4 py-2">
           <b-col class="abas_text" md="4"
-            >Cadastrar item encontrado</b-col
+            >Encontrado</b-col
           >
         </b-row>
       </router-link>
