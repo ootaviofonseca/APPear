@@ -1,10 +1,18 @@
-<p align="center">
+<div align="center">
   <a href="">
     <img src="https://yata-apix-d0b7055d-022a-481a-84a2-53c9df557c80.s3-object.locaweb.com.br/6b2ed802cfee4a2fbfb5d3f00cddd78e.png" width="70" height="70"> 
   </a>
-</p>
+</div>
 
-<h3 align="center">APPear</h3>   
+<h2 align="center">APPear</h2>
+
+<p align="center" >
+    <img src="https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D">
+    <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white">
+    <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white">
+    <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white">
+    <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white">
+</p>
 
 
 ## Sobre <img src="https://www.iconsdb.com/icons/preview/royal-blue/info-xxl.png"  width="22" height="22"> 
@@ -27,7 +35,7 @@
 ## Tecnologias Utilizadas  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968267.png"  width="25" height="25"> 
  - Vue JS 
  - Node JS
- - Postgree SQL
+ - Postgre SQL
  - HTML5
  - CSS3
  - XAMPP
