@@ -161,6 +161,7 @@
     "strip-eof": "^1.0.0",
     "supports-color": "^7.1.0",
     "symbol-observable": "^1.2.0",
+    "teste": "file:",
     "throttleit": "^1.0.0",
     "tmp": "^0.1.0",
     "tough-cookie": "^2.4.3",

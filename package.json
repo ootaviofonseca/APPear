@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/lucasnves/APPear#readme",
   "dependencies": {
+    "appear": "file:",
     "axios": "^0.27.2",
     "vue": "^3.2.38"
   }
